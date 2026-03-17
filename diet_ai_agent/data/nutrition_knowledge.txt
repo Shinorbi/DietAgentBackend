@@ -1,0 +1,34 @@
+Egg contains high protein and about 78 calories per 100g.
+Rice is a high carbohydrate food with about 200 calories per 100g.
+Chicken breast contains about 165 calories per 100g with high protein content.
+Dal is rich in fiber and plant protein, containing about 180 calories per 100g.
+Oats are high in fiber and good for digestion, containing about 150 calories per 100g.
+Almonds contain healthy fats and protein, with about 164 calories per 28g.
+Greek yogurt is high in protein and probiotics, containing about 100 calories per 100g.
+Salmon is rich in omega-3 fatty acids and contains about 208 calories per 100g.
+Quinoa is a complete protein with all essential amino acids, containing about 120 calories per 100g.
+Sweet potatoes are high in vitamin A and fiber, containing about 103 calories per 100g.
+Broccoli is low in calories but high in nutrients, containing about 34 calories per 100g.
+Avocado contains healthy monounsaturated fats, with about 160 calories per 100g.
+Lentils are high in protein and iron, containing about 116 calories per 100g.
+Chia seeds are rich in omega-3s and fiber, with about 138 calories per 28g.
+Tofu is a good plant-based protein source, containing about 76 calories per 100g.
+Berries are high in antioxidants and low in calories, with about 50 calories per 100g.
+Spinach is rich in iron and vitamins, containing only about 7 calories per 100g.
+Brown rice is a whole grain with more fiber than white rice, containing about 111 calories per 100g.
+Whole grain bread provides complex carbohydrates and fiber, with about 80 calories per slice.
+Lean beef is an excellent source of protein and iron, containing about 250 calories per 100g.
+Fish is generally low in calories and high in protein, with omega-3 fatty acids.
+Nuts are calorie-dense but nutritious, providing healthy fats and protein.
+Legumes are excellent sources of plant-based protein and fiber.
+Fruits are generally low in calories and high in vitamins and fiber.
+Vegetables are low in calories but high in nutrients and fiber.
+Whole grains provide complex carbohydrates and more nutrients than refined grains.
+Dairy products provide calcium and protein, but can be high in saturated fat.
+Healthy fats from sources like olive oil, avocados, and nuts are important for hormone production.
+Protein is essential for muscle building and repair, and helps with satiety.
+Fiber aids digestion and helps maintain healthy blood sugar levels.
+Hydration is crucial for overall health and can help with weight management.
+Meal timing can affect metabolism and energy levels throughout the day.
+Portion control is important for weight management, even with healthy foods.
+Balanced meals should include protein, complex carbohydrates, healthy fats, and vegetables.

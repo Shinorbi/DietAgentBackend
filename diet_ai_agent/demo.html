@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet AI Agent Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .section h2 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .result {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            white-space: pre-wrap;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Diet AI Agent Demo</h1>
+
+        <div class="section">
+            <h2>1. Meal Analysis</h2>
+            <button onclick="analyzeMeal()">Analyze Sample Meal</button>
+            <div id="mealResult" class="result"></div>
+        </div>
+
+        <div class="section">
+            <h2>2. Diet Plan Generator</h2>
+            <div class="form-group">
+                <label>Weight (kg):</label>
+                <input type="number" id="weight" value="70" step="0.1">
+            </div>
+            <div class="form-group">
+                <label>Height (cm):</label>
+                <input type="number" id="height" value="170">
+            </div>
+            <div class="form-group">
+                <label>Age:</label>
+                <input type="number" id="age" value="25">
+            </div>
+            <div class="form-group">
+                <label>Gender:</label>
+                <select id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Activity Level:</label>
+                <select id="activityLevel">
+                    <option value="sedentary">Sedentary</option>
+                    <option value="light">Light</option>
+                    <option value="moderate" selected>Moderate</option>
+                    <option value="active">Active</option>
+                    <option value="very_active">Very Active</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Goal:</label>
+                <select id="goal">
+                    <option value="lose_weight">Lose Weight</option>
+                    <option value="gain_weight">Gain Weight</option>
+                    <option value="maintain_weight" selected>Maintain Weight</option>
+                </select>
+            </div>
+            <button onclick="generateDietPlan()">Generate Diet Plan</button>
+            <div id="dietResult" class="result"></div>
+        </div>
+
+        <div class="section">
+            <h2>3. Food Knowledge</h2>
+            <div class="form-group">
+                <label>Query:</label>
+                <input type="text" id="foodQuery" value="Is egg good for weight loss?">
+            </div>
+            <button onclick="lookupFood()">Lookup Food Knowledge</button>
+            <div id="foodResult" class="result"></div>
+        </div>
+
+        <div class="section">
+            <h2>4. Food Recommendations</h2>
+            <div class="form-group">
+                <label>Meal Type:</label>
+                <select id="mealType">
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Goal:</label>
+                <select id="recGoal">
+                    <option value="lose_weight">Lose Weight</option>
+                    <option value="gain_weight">Gain Weight</option>
+                    <option value="maintain_weight" selected>Maintain Weight</option>
+                </select>
+            </div>
+            <button onclick="getRecommendations()">Get Recommendations</button>
+            <div id="recResult" class="result"></div>
+        </div>
+
+        <div class="section">
+            <h2>5. AI Agent Analysis</h2>
+            <button onclick="aiAgentAnalysis()">AI Agent Analysis</button>
+            <div id="aiResult" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        async function analyzeMeal() {
+            const meal = [{"name": "egg", "qty": 2}, {"name": "toast", "qty": 1}];
+            const response = await fetch('http://localhost:8000/api/meal/analyze', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    user_id: 1,
+                    meal_type: 'breakfast',
+                    foods: meal
+                })
+            });
+            const result = await response.json();
+            document.getElementById('mealResult').textContent = JSON.stringify(result, null, 2);
+        }
+
+        async function generateDietPlan() {
+            const data = {
+                weight: parseFloat(document.getElementById('weight').value),
+                height: parseFloat(document.getElementById('height').value),
+                age: parseInt(document.getElementById('age').value),
+                gender: document.getElementById('gender').value,
+                activity_level: document.getElementById('activityLevel').value,
+                goal: document.getElementById('goal').value
+            };
+            const response = await fetch('http://localhost:8000/api/user/diet-plan', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            });
+            const result = await response.json();
+            document.getElementById('dietResult').textContent = JSON.stringify(result, null, 2);
+        }
+
+        async function lookupFood() {
+            const query = document.getElementById('foodQuery').value;
+            const response = await fetch('http://localhost:8000/api/ask', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({question: query})
+            });
+            const result = await response.json();
+            document.getElementById('foodResult').textContent = JSON.stringify(result, null, 2);
+        }
+
+        async function getRecommendations() {
+            const mealType = document.getElementById('mealType').value;
+            const goal = document.getElementById('recGoal').value;
+            const response = await fetch('http://localhost:8000/api/ask', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    question: `What are some healthy ${mealType} options for ${goal} goal?`
+                })
+            });
+            const result = await response.json();
+            document.getElementById('recResult').textContent = JSON.stringify(result, null, 2);
+        }
+
+        async function aiAgentAnalysis() {
+            const response = await fetch('http://localhost:8000/api/ask', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    question: 'Here my diet plan for loosing weight in one month. plan :  recommendation: Diet plan: {daily_calories: 2545, protein_grams: 254.5, carbs_grams: 190.9, fat_grams: 84.8}}. From this suggest me one month of a bengali diet.'
+                })
+            });
+            const result = await response.json();
+            document.getElementById('aiResult').textContent = JSON.stringify(result, null, 2);
+        }
+    </script>
+</body>
+</html>
