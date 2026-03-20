@@ -10,8 +10,8 @@ def get_llm():
         model="stepfun/step-3.5-flash:free",
         openai_api_base="https://openrouter.ai/api/v1",
         openai_api_key=api_key,
-        temperature=0.7,
-        max_tokens=8000,
+        temperature=0.3,
+        # max_tokens=15000,
         # Best-effort: force valid JSON object output (OpenAI-compatible).
         model_kwargs={"response_format": {"type": "json_object"}},
     )

@@ -28,10 +28,11 @@ class DietAgent:
         if self._has_llm:
             self.llm = ChatOpenAI(
                 model="stepfun/step-3.5-flash:free",
+                # model= "meta-llama/llama-3.3-70b-instruct:free",
                 openai_api_base="https://openrouter.ai/api/v1",
                 openai_api_key=api_key,
                 temperature=0.7,
-                max_tokens=8000,
+                max_tokens=25000,
                 timeout=20,  # a bit more breathing room for OpenRouter
                 model_kwargs={"response_format": {"type": "json_object"}},
             )

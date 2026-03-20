@@ -30,7 +30,7 @@ def test_agent():
 
     # Test 1: General query
     _print_section("1) General Query (LLM chat)")
-    _pretty_print_result(diet_agent.run("What are the benefits of eating eggs?"))
+    _pretty_print_result(diet_agent.run("What are the benefits of eating napoles styple pizza?"))
     print("\n" + "="*50 + "\n")
 
     # Test 2: Meal analysis
@@ -131,11 +131,11 @@ def test_agent():
                 "goal": "maintain_weight",
                 "days": 7,
                 "meals_per_day": 3,
-                "country": "USA",
-                "currency": "USD",
+                "country": "ITALY",
+                "currency": "EUR",
                 "budget_per_day": 20,
-                "cuisine_preferences": ["american", "mediterranean"],
-                "dietary_restrictions": ["vegetarian"],
+                "cuisine_preferences": ["ITALIAN"],
+                "dietary_restrictions": ["non-vegetarian"],
                 "allergies": ["peanut"],
                 "cooking_time_per_day_minutes": 25,
                 "cooking_level": "beginner",

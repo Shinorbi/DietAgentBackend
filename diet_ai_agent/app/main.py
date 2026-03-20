@@ -1,15 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .api.routes import router as api_router
-from .vectorstore.chroma_store import chroma_store
-from .database.db import create_connection, create_tables
+from app.api.routes import router as api_router
+from app.vectorstore.chroma_store import chroma_store
+from app.database.db import create_connection, create_tables
 import uvicorn
 import sys
 import os
-
-# Add the parent directory to the Python path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 def create_app():
     """Create and configure the FastAPI app"""
     app = FastAPI(
